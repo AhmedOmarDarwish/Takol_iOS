@@ -8,23 +8,25 @@
 
 import UIKit
 
-class Validator: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class Validator {
+    //Singletone for class
+    static let shared = Validator()
+    private init() {}
+    
+    //Func to test valid email
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,20}"
+        let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //Func to test valid password
+    func isValidPassword(_ password: String) -> Bool {
+        return password.count == 8
+//        let passwordRegEx = "([(0-9)(A-Z)(!@#$%ˆ&*+-=<>)]+)([a-z]*){6,8}"
+//        //        let passwordRegEx = "[(0-9)]{8}"
+//        let passwordTest  = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+//        return passwordTest.evaluate(with: password)
     }
-    */
-
+    
 }

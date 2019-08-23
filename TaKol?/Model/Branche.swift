@@ -7,3 +7,9 @@
 //
 
 import Foundation
+struct Branche: Codable {
+    var id: Int
+    var b_city: String
+    var b_area: String
+}
+

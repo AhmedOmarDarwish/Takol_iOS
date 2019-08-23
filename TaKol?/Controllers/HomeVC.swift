@@ -9,22 +9,21 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //Change NavigationItem Title
+        self.navigationItem.title = "Home"
+    }
+    @IBAction func settingBtnPressed(_ sender: Any) {
+        let settingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SettingVC") as! SettingVC
+        //Push
+        self.navigationController?.pushViewController(settingVC, animated: true)
+    }
+    @IBAction func ourRestaurantsBtnPressed(_ sender: Any) {
+        let restaurantsTableVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RestaurantsTableVC") as! RestaurantsTableVC
+        //Push
+        self.navigationController?.pushViewController(restaurantsTableVC, animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -6,4 +6,11 @@
 //  Copyright © 2019 3Mr. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIColor {
+    static var greenColor: UIColor {
+        return UIColor(displayP3Red: 76/255, green: 175/255, blue: 80/255, alpha: 1)
+    }
+}
+

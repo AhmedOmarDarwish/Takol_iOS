@@ -7,24 +7,19 @@
 //
 
 import UIKit
+import SDWebImage
+import Cosmos
 
 class RestaurantDetailsVC: UIViewController {
-
+    @IBOutlet weak var restaurantImage_iv: UIImageView!
+    @IBOutlet weak var ratingStar: CosmosView!
+    var restaurant: Restaurant!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = restaurant.name
+        restaurantImage_iv.sd_setImage(with: restaurant.r_image)
+        ratingStar.rating = 3.5
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

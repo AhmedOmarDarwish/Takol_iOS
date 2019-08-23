@@ -8,23 +8,45 @@
 
 import UIKit
 
-class UserdefultsManger: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class UserdefultsManger {
+    //Single tone for class
+    static let shared = UserdefultsManger()
+    let def = UserDefaults.standard
+    
+    var userData: User? {
+        get {
+            guard let savedUser = def.object(forKey: UserDefaultsKeys.user) as? Data else {
+                return nil
+            }
+            let decoded = try? (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedUser) as! User)
+            return decoded
+            
+        } set {
+            if let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: newValue!, requiringSecureCoding: false) {
+                def.set(encodedData, forKey: UserDefaultsKeys.user)
+            }
+        }
+    }
+            
+    var isLogedIn: Bool? {
+        get {
+            guard let loggedin = def.object(forKey: UserDefaultsKeys.isLogedIn) as? Bool else {
+                return false
+            }
+            return loggedin
+        } set {
+            def.set(newValue, forKey: UserDefaultsKeys.isLogedIn)
+            }
+                
+        }
+    
+    private init(){}
+    func clearUserData() {
+        self.isLogedIn = false
+        //        def.removeObject(forKey: UserDefaultsKeys.user)
+        //        def.synchronize()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
+

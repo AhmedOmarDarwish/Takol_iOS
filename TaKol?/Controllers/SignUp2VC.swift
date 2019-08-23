@@ -12,7 +12,7 @@ import Alamofire
 import AlamofireImage
 
 
-class SignUpVCs: UIViewController {
+class SignUp2VC: UIViewController {
     @IBOutlet weak var user_iv: UIImageView!
     @IBOutlet weak var name_tf: UITextField!
     @IBOutlet weak var address_tf: UITextField!
@@ -22,13 +22,13 @@ class SignUpVCs: UIViewController {
     @IBOutlet weak var password_tf: UITextField!
     @IBOutlet weak var rePassword_tf: UITextField!
     @IBOutlet weak var signUp_btn: UIButton!
-   
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         //user_iv.image = #imageLiteral(resourceName: "addImage")
         //Change NavigationItem Title
         self.navigationItem.title = "Sign Up"
@@ -51,6 +51,21 @@ class SignUpVCs: UIViewController {
     func profileImage() {
         let downloadURL = NSURL(string: "https://robohash.org/123.png")!
         user_iv.af_setImage(withURL: downloadURL as URL)
+        
+        
+       
+    }
+    //Start Indicator
+    func startLoading(){
+        activityIndicator.hidesWhenStopped = true;
+        view.addSubview(activityIndicator);
+        activityIndicator.startAnimating();
+        UIApplication.shared.beginIgnoringInteractionEvents();
+    }
+     //Stop Indicator
+    func stopLoading(){
+        activityIndicator.stopAnimating();
+        UIApplication.shared.endIgnoringInteractionEvents();
     }
     
     @IBAction func signUpBtnPressed(_ sender: UIButton) {
@@ -87,6 +102,8 @@ class SignUpVCs: UIViewController {
     }
     
     @IBAction func imagePickerBtnPressed(_ sender: UIButton) {
+        activityIndicator.hidesWhenStopped = false
+        activityIndicator.startAnimating()
         // create the alert
         let alert = UIAlertController(title: "Choose", message: "Choose Method To Get Your Image", preferredStyle: UIAlertController.Style.alert)
         
@@ -102,7 +119,7 @@ class SignUpVCs: UIViewController {
 }
 
 //ImagePicker
-extension SignUpVCs: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SignUp2VC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //return dictionary of image key because original or edit
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}

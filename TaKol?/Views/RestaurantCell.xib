@@ -1,21 +1,61 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RestaurantCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RestaurantCell" rowHeight="105" id="KGk-i7-Jjw" customClass="RestaurantCell" customModule="TaKol_" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="104.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Si-kv-cfI">
+                        <rect key="frame" x="10" y="7.5" width="90" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="6JI-b4-wEn"/>
+                            <constraint firstAttribute="width" constant="90" id="Bqp-t8-j5K"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejC-Fs-yds">
+                        <rect key="frame" x="115" y="10" width="57" height="22"/>
+                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XG1-ap-ZwK">
+                        <rect key="frame" x="115" y="43" width="198" height="18.5"/>
+                        <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="0Si-kv-cfI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ctB-3q-SBa"/>
+                    <constraint firstItem="XG1-ap-ZwK" firstAttribute="centerY" secondItem="0Si-kv-cfI" secondAttribute="centerY" id="he6-mv-2b4"/>
+                    <constraint firstItem="0Si-kv-cfI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-10" id="jJk-26-V6N"/>
+                    <constraint firstAttribute="trailing" secondItem="XG1-ap-ZwK" secondAttribute="trailing" constant="15" id="ph0-sE-Q1G"/>
+                    <constraint firstItem="XG1-ap-ZwK" firstAttribute="leading" secondItem="0Si-kv-cfI" secondAttribute="trailing" constant="15" id="piN-Ka-CY0"/>
+                    <constraint firstItem="ejC-Fs-yds" firstAttribute="centerY" secondItem="0Si-kv-cfI" secondAttribute="centerY" multiplier="0.4" id="wDd-tF-07L"/>
+                    <constraint firstItem="ejC-Fs-yds" firstAttribute="leading" secondItem="0Si-kv-cfI" secondAttribute="trailing" constant="15" id="x9s-P9-7P2"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="restaurantName_lbl" destination="ejC-Fs-yds" id="gPp-8N-xRb"/>
+                <outlet property="resturantDescription_lbl" destination="XG1-ap-ZwK" id="ufB-pi-45N"/>
+                <outlet property="resturantImage_iv" destination="0Si-kv-cfI" id="JuC-hK-4ec"/>
+            </connections>
+            <point key="canvasLocation" x="126.08695652173914" y="100.11160714285714"/>
         </tableViewCell>
     </objects>
 </document>

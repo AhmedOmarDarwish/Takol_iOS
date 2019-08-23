@@ -1,0 +1,6 @@
+framework module Pods_TaKol_ {
+  umbrella header "Pods-TaKol?-umbrella.h"
+
+  export *
+  module * { export * }
+}

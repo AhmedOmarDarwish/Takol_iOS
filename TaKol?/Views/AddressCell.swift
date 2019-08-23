@@ -10,6 +10,7 @@ import UIKit
 
 class AddressCell: UITableViewCell {
 
+    @IBOutlet weak var address_tf: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +20,10 @@ class AddressCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCell(address: String){
+        self.address_tf.text = address
     }
     
 }
